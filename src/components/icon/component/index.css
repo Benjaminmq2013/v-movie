@@ -1,0 +1,7 @@
+.icon {
+    transition: 0.3s;
+}
+
+.Icon:hover {
+    background-color: #36afff;
+}

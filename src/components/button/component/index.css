@@ -1,0 +1,28 @@
+.button{
+    width: 407px;
+    height: 53px;
+    color: #fefefe;
+    font-size: 17px;
+    font-weight: 600;
+    background: rgb(208,55,240);
+    background: linear-gradient(90deg, rgba(208,55,240,1) 0%, rgba(211,40,167,1) 100%);
+    border-radius: 7px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    padding: 7px 20px;
+    transition: 0.2s;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.button:hover {
+  background: linear-gradient(90deg, rgba(194, 52, 229, 1)  0%, rgba(201, 0, 149, 1) 100%);
+}
+
+.button_icon {
+  cursor: pointer;
+}

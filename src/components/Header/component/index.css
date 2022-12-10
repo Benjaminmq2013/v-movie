@@ -1,0 +1,14 @@
+.Header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-name{
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.header-logo{
+    height: 27px;
+    width: 34px;
+}

@@ -1,0 +1,54 @@
+:root{
+    /* I set padding in variables because it's being used to calculate the container width as follows, width: calc(100vw - padding) */
+    --login-padding-left: 117px;
+    --login-padding-right: 117px;
+}
+
+.Login-container{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("images/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;  
+    display: flex;
+    align-items: center; 
+}
+
+.Login-mask{
+    height: 100vh;
+    width: calc(100vw - var(--login-padding-left) - var(--login-padding-right));
+    padding-left: var(--login-padding-left);
+    padding-right: var(--login-padding-right);
+    background-color: #19191e8b;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.Login-header{
+    padding-top: 34px;
+    width: 100%;
+}
+
+.Login-title{
+    margin-top: 167px;
+    margin-bottom: 0;
+    font-size: 29px;
+    font-weight: 600;
+    margin-bottom: 55px;
+}
+
+.login-link{
+    color: #F9F9F9;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 5px;
+    text-decoration: none;
+    margin-bottom: 47px;
+}
+
+.login-password{
+    margin-top: 24px;
+}

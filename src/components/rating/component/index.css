@@ -1,0 +1,14 @@
+.rate-icon{
+    cursor: pointer;
+    height: 15px;
+    width: 15px;    
+    background-color: #909090;
+} 
+
+.rate-selected{
+    background-color: #EFE817;
+}
+
+.rating-container{
+    display: flex;
+}
