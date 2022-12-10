@@ -1,0 +1,147 @@
+:root{
+    --details-padding: 143px;
+    --details-mask-padding: 38px;
+}
+
+.details-container{
+    width: calc(100vw - (var(--details-padding) * 2));
+    padding: 0 var(--details-padding);
+}
+
+.details-hero{
+    padding-top: 34px;
+    height: 619px;
+    border-bottom-left-radius: 57px;
+    border-bottom-right-radius: 57px;
+    background-repeat: no-repeat;
+    background-size:cover;
+    position: relative;
+}
+
+.details-mask{
+    height: 100%;
+    width: calc(100% - (var(--details-mask-padding) * 2));
+    padding: 0 var(--details-mask-padding);
+    background-color: #2a2a2a55;
+    background: linear-gradient(180deg, #2a2a2a6b 0%, #2a2a2a6b 70%, #000 100%);
+    border-radius: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.details-btn__container{
+    width: 100%;
+}
+
+.details-back__button{
+    font-size: 22px;
+    font-weight: 600;
+    width: auto;
+    padding: 0;
+    background: transparent;
+    margin-top: 39px;
+}
+
+.details-back__button:hover{
+    background: initial;
+}
+
+.details-back__button .button_icon {
+    margin-right: 5px;
+    height: 21px;
+    width: 13px;
+}
+
+.details-title{
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.details-subtitle{
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.details-info_container{
+    margin-top: auto;
+}
+
+.details-like__button{
+    position: absolute;
+    right: 38px;
+    bottom:38px;
+    width: auto;
+    padding: 0;
+    flex-direction: column;
+    gap: 5px;
+    background: initial;
+}
+.details-like__button:hover{
+    background: initial;
+}
+
+.details-overview__title{
+    font-size: 29px;
+    margin-top: 25px;
+    margin-bottom: 27px;
+}
+
+.details-overview__description{
+    margin-top: 0;
+    margin-bottom: 37px;
+    font-size: 21px;
+}
+
+
+/* Cast */
+
+
+.details-cast__title{
+    font-size: 20px;
+}
+
+.details-user{
+    margin-right: 30px;    
+}
+
+.details-user .image{
+    box-shadow: initial;
+}
+
+.details-user .title{
+    color: #B8B8B8;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.details-user .subtitle{
+    color: #E3E3E3;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.details-row{
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 55px;
+}
+
+.details-row::-webkit-scrollbar{
+    height: 5px;
+    background-color: rgb(34, 34, 34);
+    border-radius: 10px;
+}
+.details-row::-webkit-scrollbar-thumb{
+    height: 5px;
+    background-color: rgb(95, 95, 95);
+    border-radius: 10px;
+}

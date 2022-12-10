@@ -2,12 +2,12 @@ import "./index.css"
 import HomeLayout from "../../layouts/home"
 import Card from "../../components/card"
 
-const Home = () => {
+const Favorites = () => {
   const data:number[] = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ]
   return (
     <HomeLayout>
       <div className="home-catalogue__container">
-        <h2>Popular</h2>
+        <h2>Favorites</h2>
         <div className="home-catalogue">
           {data.map(movie => (
             <Card 
@@ -24,4 +24,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Favorites

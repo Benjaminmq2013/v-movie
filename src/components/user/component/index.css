@@ -1,0 +1,32 @@
+
+.user{
+    display: flex;
+    align-items: center;
+}
+
+.image{
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 6px #dfdfdf;
+    object-fit: cover;
+    margin-right: 13px;
+  }
+  .grid{  
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title{
+    color: #292929;
+    font-weight: 700;
+    margin: 0;
+    font-size: 12px;
+  }
+
+  .subtitle{ 
+    color: #7E7E7E; 
+    font-weight: 400;
+    margin: 0;
+    font-size: 12px;
+  }

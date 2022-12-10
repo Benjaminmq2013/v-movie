@@ -1,6 +1,7 @@
 import Home from "../views/home"
 import Login from "../views/login"
 import Favorites from "../views/favorites"
+import Details from "../views/details"
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
@@ -11,11 +12,15 @@ const router = createBrowserRouter([
     },
     {
       path: "/login",
-      element: <Login/> 
+      element: <Login /> 
     },
     {
       path: "/favorites",
-      element: <Favorites/> 
+      element: <Favorites /> 
+    },
+    {
+      path: "/details",
+      element: <Details /> 
     },
 ])
 

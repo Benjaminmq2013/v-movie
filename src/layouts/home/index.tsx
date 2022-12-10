@@ -5,7 +5,7 @@ import { useLocation, useMatch, useNavigate, useNavigation } from "react-router-
 import "./index.css"
 
 export interface params{
-    children: JSX.Element | JSX.Element[]
+  children: JSX.Element | JSX.Element[],
 }
 
 const HomeLayout = (params:params):JSX.Element => {
@@ -21,7 +21,7 @@ const HomeLayout = (params:params):JSX.Element => {
         <Header className="home-header" />
         <div className="home-searchbar__container">
           <Input className="home-searchbar" placeholder="Search a movie..." />
-
+          <Button className="home-search_button" icon="/icons/home/search.svg" />
         </div>
 
         <div className="home-wrapper" >
