@@ -1,34 +1,33 @@
-// The initial request to get movies
+// The initial request to get movies cast
 import { T } from "../interfaces/index"
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { setLoading, setMovies } from "../store/movies"
+import { setLoading, setDetails } from "../store/movies"
 import fetchData from "../api/fetchData";
 import { useEffect } from 'react';
 
 
-
-const useGetData = (endpoint: string) => {
+const useGetDetails = (endpoint: string,) => {
     
 
     const dispatch = useDispatch()
     
-    const Movies:T.Movies[] = useSelector((state: RootState) => state.movieSlice.movies)
+    const Details:T.MovieDetails = useSelector((state: RootState) => state.movieSlice.details)
     const isLoading:boolean = useSelector((state: RootState) => state.movieSlice.loading )  
   
-    const handleSetMovies = (movies: T.Movies[]) => dispatch(setMovies(movies));
+    const handleSetDetails = (Details: T.MovieDetails) => dispatch(setDetails(Details));
     const handleLoading = (loading: boolean) => dispatch(setLoading(loading))
   
-    const getProducts = () => fetchData<{pages:number, results: T.Movies[]}>(
+    const getDetails = () => fetchData<T.MovieDetails>(
       { entryPoint: endpoint, onLoading: (loading: boolean) => handleLoading(loading) },
-      { setData: ({results, pages}) => handleSetMovies(results) }
+      { setData: (details:T.MovieDetails) => handleSetDetails(details) }
     )
   
     useEffect(() => {
-      getProducts()
+        getDetails()
     }, [])
 
-    return { Movies, isLoading }
+    return { Details, isLoading }
 }
 
-export default useGetData
+export default useGetDetails

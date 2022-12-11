@@ -6,11 +6,12 @@ export interface params{
   title: string,
   subtitle?: string,
   description: string,
+  onClick?: () => void,
 }
 
 const App = (params:params):JSX.Element => {
   return (
-    <div className="catalogue_card" >
+    <div className="catalogue_card" onClick={ params.onClick } >
       <img className="card_image" src={ params.image } alt="" />
       <div className="card_info">
         <h5 className="card_title" >{ params.title }</h5>

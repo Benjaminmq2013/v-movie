@@ -2,14 +2,16 @@ import "./index.css"
 import HomeLayout from "../../layouts/home"
 import Card from "../../components/card"
 import useGetData from '../../hooks/useGetData';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
 
   const { Movies, isLoading } = useGetData("movie/popular")
-  
+  const navigate = useNavigate()
 
-  const data:number[] = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ]
+  
+  const handleNavigate = (movieId: string) => navigate(`details&${movieId}`)
 
   return (
     <HomeLayout>
@@ -23,6 +25,7 @@ const Home = () => {
               title={ movie.title } 
               subtitle={ movie.release_date } 
               description={ movie.overview }
+              onClick={ () => handleNavigate(`${movie.id}`) }
             />
           ))}
         </div>

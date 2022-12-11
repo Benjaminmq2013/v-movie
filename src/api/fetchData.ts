@@ -20,7 +20,8 @@ const fetchData = <Types,>( params: params, callback?: { setData: (data: Types) 
         params: {
             api_key: API_KEY,
             language: "en-US",
-            page: 1
+            page: 1,
+            ...params.params
         },
         method: params.method ? params.method : "get",
         data: params.data || null,
@@ -31,7 +32,8 @@ const fetchData = <Types,>( params: params, callback?: { setData: (data: Types) 
     params.onLoading(true)
     axios( config )
     
-    .then((response:AxiosResponse<Types>) => {           
+    .then((response:AxiosResponse<Types>) => {  
+        console.log(response)          
         params.onLoading(false)
         callback && callback.setData(response.data)
     })
