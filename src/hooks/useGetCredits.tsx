@@ -24,7 +24,7 @@ const useGetCredits = (endpoint: string,) => {
   
     useEffect(() => {
         getCredits()
-    }, [])
+    }, [endpoint])
 
     return { Credits, isLoading }
 }

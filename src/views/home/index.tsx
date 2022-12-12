@@ -10,6 +10,7 @@ import { RootState } from '../../store/index';
 import { useContext } from 'react';
 import { SearchContext } from '../../context/searchContext';
 import { setSearchMovies } from "../../store/movies";
+import LoadingIcon from '../../components/loading/index';
 
 const Home = () => {
 
@@ -59,6 +60,8 @@ const Home = () => {
           ))}
         </div>
       </div>
+
+      { isLoading === true ? <LoadingIcon /> : <></>}
     </HomeLayout>
   )
 }

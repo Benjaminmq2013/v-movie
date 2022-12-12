@@ -24,7 +24,7 @@ const useGetRecommendations = (endpoint: string,) => {
 
   useEffect(() => {
       getRecommendations()
-  }, [])
+  }, [endpoint])
 
   return { Recommendations, isLoading }
 }

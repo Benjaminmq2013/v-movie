@@ -7,6 +7,7 @@ export interface params{
     data?: object,  
     then?: () => void
     base_url?: string,
+    onError?: () => void
     
     onLoading: (loading: boolean) => void
 }
@@ -40,6 +41,7 @@ const fetchData = <Types,>( params: params, callback?: { setData: (data: Types) 
     })
     .catch((error) => {
         console.log(error)
+        params.onError && params.onError()
     })
     .then(() => params.then && params.then())
     

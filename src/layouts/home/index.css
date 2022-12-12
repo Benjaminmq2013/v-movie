@@ -1,9 +1,9 @@
 :root{
-    --home-padding-left: 185px;
+    --home-padding: 9.6%;
 }
 
 .home-container{
-    padding-left: var(--home-padding-left);
+    padding: 0 var(--home-padding);
 }
 
 .home-header{
@@ -13,13 +13,12 @@
 .home-searchbar__container{
     display: flex;
     justify-content: center;
-    margin-right: calc(var(--home-padding-left) / 2);
     align-items: center;
 }
 
 .home-searchbar .input{
     height: 40px;
-    width: 660px;
+    width: 34vw;
     background-color: #1F1F1F;
     font-size: 12px;
     font-weight: 400;
@@ -30,7 +29,7 @@
 }
 
 .home-menu{
-    margin-right: 126px;
+    margin-right: 8%;
 }
 
 .home-menu__title{

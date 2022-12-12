@@ -1,11 +1,8 @@
-import "../favorites/index.css"
+import "./index.css"
 import "../../layouts/home/responsive.css"
 import HomeLayout from "../../layouts/home"
-
-import Card from "../../components/card"
 import Button from "../../components/button"
 import useFavorites from "../../hooks/useFavorites"
-import { useNavigate } from 'react-router-dom';
 import { T } from "../../interfaces";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from "../../store";
@@ -14,7 +11,7 @@ import { SearchContext } from '../../context/searchContext';
 import { setSearchMovies } from "../../store/movies"
 
 
-const Favorites = () => {
+const NotFound = () => {
 
   let data: T.Movies[] | T.MovieDetails[] = []
 
@@ -25,8 +22,7 @@ const Favorites = () => {
   const handleRemoveSearch = () => dispatch(setSearchMovies([]))
   
   const { favorites } = useFavorites()
-  const navigate = useNavigate()
-  const handleNavigate = (movieId: string) => navigate(`/details&${movieId}`)
+  
   
   // If there are results from a search, they will be displayed. Otherwise Favorite Movies will be displayed.
   if(Movies.length >= 1) data = Movies
@@ -39,7 +35,7 @@ const Favorites = () => {
       <div className="home-catalogue__container">
 
         <div className="results-row">
-          <h2>{Movies.length >= 1 ? "Search results:" : "Favorites" }</h2>
+          <h2>{Movies.length >= 1 ? "Search results:" : "Not Found" }</h2>
 
           { Movies.length >= 1 && 
           <Button 
@@ -51,21 +47,15 @@ const Favorites = () => {
           
         </div>
 
-        <div className="home-catalogue">
-          {data.map(movie => (
-            <Card 
-              key={movie.id}
-              image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
-              title={ movie.title } 
-              subtitle={ movie.release_date } 
-              description={ movie.overview }
-              onClick={ () => handleNavigate(`${movie.id}`) }
-            />
-          ))}
+        <div className="home-catalogue not-found__container">
+          <img src="icons/404/not-found.svg" alt="Not Found" className="not-found__image" />
+          <h5 className="not-found__title">No results were found for this search</h5>
+          <h6 className="not-found__subtitle" >But stay tuned! <br />
+            We add new content every week</h6>
         </div>
       </div>      
     </HomeLayout>
   )
 }
 
-export default Favorites
+export default NotFound

@@ -15,8 +15,8 @@
 }
 
 .catalogue_card{
-    height: 251px;
-    width: 194px;
+    height: 224px;
+    width: 175px;
     background-color: #777777;
     margin: 10px;
     border-radius: 15px;
@@ -40,7 +40,7 @@
     position: absolute;
     padding: 15px 10px;
     width: calc(100% - 20px);
-    max-height: 221px;
+    max-height: 194px;
     transition: .3s;
     overflow-y: auto;
 }

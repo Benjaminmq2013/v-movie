@@ -5,9 +5,11 @@ export interface authState {
   status: "authenticated" | "not-authenticated" | "checking",
 }
 
+const sessionInStorage = localStorage.getItem("authToken")
+
 const initialState: authState = {
-  token: "",
-  status: "not-authenticated"
+  token: sessionInStorage || "",
+  status: sessionInStorage === "" ? "not-authenticated" : "authenticated"
 }
 
 export const authSlice = createSlice({

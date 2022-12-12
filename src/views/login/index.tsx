@@ -1,15 +1,17 @@
 import "./index.css"
+import "./responsive.css"
 
 import Header from "../../components/Header"
 import Input from "../../components/input"
 import Button from "../../components/button"
 import postCredentials from '../../auth/postCredentials';
 
-import { useState  } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setLogin, setLogOut } from "../../store/auth";
 import { setChecking } from "../../store/auth";
 import { useNavigate } from 'react-router-dom';
+import useSession from '../../hooks/useSession';
 
 
 export interface loginProps{
@@ -19,10 +21,25 @@ export interface loginProps{
 
 const Login = () => {
   
+  const { handleSetSession, handleRemoveSession } = useSession()
 
   const dispatch = useDispatch()
-  const handleSetCredentials = (token: string) => dispatch(setLogin(token))
-  const handleRemoveCredentials = () => dispatch(setLogOut())
+
+  const handleSetCredentials = (token: string) => {
+    // Redux Storage
+    dispatch(setLogin(token))
+    // Local Storage
+    handleSetSession(token)
+  }
+  
+  const handleRemoveCredentials = () => {
+    // Redux Storage
+    dispatch(setLogOut())
+    
+    // Local Storage
+    // handleRemoveSession()
+
+  }
 
   const [value, setValue] = useState<loginProps>({ email: "eve.holt@reqres.in", password: "cityslicka"  })
 
@@ -31,13 +48,11 @@ const Login = () => {
   const navigate = useNavigate();
   const navigateHome = () => navigate("/")
 
-
   const handleSubmit = async(e:React.FormEvent<HTMLFormElement>) =>{ 
     e.preventDefault()
     dispatch(setChecking())
     postCredentials({ email: value.email, password: value.password, onSuccess: handleSetCredentials, onError:handleRemoveCredentials, redirect: navigateHome })
   }
-
   
 
   return (

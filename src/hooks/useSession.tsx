@@ -1,4 +1,4 @@
-// Local storage management for session
+// Local storage management for authentication
 
 import { useState } from 'react';
 
@@ -7,7 +7,7 @@ const useSession = () => {
     const getSession = ():string | null => {
         try {
             const session = window.localStorage.getItem("authToken")
-            if(session !== null) return JSON.parse(session)
+            if(session !== null) return session
         } catch (error) {
             console.error(error)
         }
@@ -19,21 +19,24 @@ const useSession = () => {
 
     const handleSetSession = (token: string) =>{        
         try {
-            if(token !== null) window.localStorage.setItem("authToken", token);
+            if(token !== null) window.localStorage.setItem("authToken", `${token}`);
         } catch (error) {
             console.error(error);
         } 
         setToken(getSession())
     } 
 
-    const handleRemoveSession = () =>{        
+    const handleRemoveSession = () =>{  
+          
         try {
             window.localStorage.setItem("authToken", "");
         } catch (error) {
             console.error(error);
         } 
-        setToken(getSession())
+        // setToken(getSession())
     } 
+
+
 
     return { token, handleSetSession, handleRemoveSession }
 }

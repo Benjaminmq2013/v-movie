@@ -4,15 +4,17 @@ import { RootState } from '../../../store/index';
 
 
 export interface params{
-    children: JSX.Element
+  children: JSX.Element
+  protectFrom: "authenticated" | "not-authenticated"
+  redirect: string
 }
 const ProtectedRoute = (params:params) => {
   const isAuthenticated = useSelector(
     (state: RootState) => state.authSlice.status
   );
 
-  if (isAuthenticated === "not-authenticated") {
-    return <Navigate to="/login" replace />;
+  if (isAuthenticated === params.protectFrom) {
+    return <Navigate to={ params.redirect } replace />;
   }
 
   return params.children;

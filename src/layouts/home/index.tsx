@@ -1,19 +1,27 @@
+
 import Button from "../../components/button"
 import Header from "../../components/Header"
 import Input from "../../components/input"
-import { useLocation, useNavigate } from "react-router-dom";
-import "./index.css"
 import searchMovie from '../../middleware/searchMovie';
+
+import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { SearchContext } from '../../context/searchContext';
 import { useDispatch } from 'react-redux';
 import { setLogOut } from "../../store/auth";
+import useSession from '../../hooks/useSession';
+
+import "./index.css"
+import "./responsive.css"
+import LoadingIcon from '../../components/loading/index';
 
 export interface params{
   children: JSX.Element | JSX.Element[],
 }
 
 const HomeLayout = (params:params):JSX.Element => {
+
+  const { handleRemoveSession } = useSession()
 
   const dispatch = useDispatch()
 
@@ -34,10 +42,14 @@ const HomeLayout = (params:params):JSX.Element => {
   }
 
   const handleLogOut = () => {
+    // Redux Storage
     dispatch(setLogOut())
+    
+    // Local Storage
+    handleRemoveSession()
+    
   }
   
-
 
   return (
     <div className="home-container">
@@ -45,7 +57,7 @@ const HomeLayout = (params:params):JSX.Element => {
         <form className="home-searchbar__container" onSubmit={ handleSubmit } >
           <Input className="home-searchbar" placeholder="Search a movie..." value ={ value } setValue = { setText } />
           <Button className="home-search_button" icon="/icons/home/search.svg" />
-          <Button className="home-search_button results-tag" icon="/icons/home/logout.svg" title="Log Out" onClick={handleLogOut} type="button" />
+          <Button className="home-search_button results-tag logout-btn" icon="/icons/home/logout.svg" title="Log Out" onClick={handleLogOut} type="button" />
         </form>
 
         <div className="home-wrapper" >
@@ -57,6 +69,8 @@ const HomeLayout = (params:params):JSX.Element => {
 
           { params.children }
         </div>
+
+        { isLoading === true ? <LoadingIcon /> : <></>}
     </div>
   )
 }

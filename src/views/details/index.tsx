@@ -4,7 +4,7 @@ import Header from "../../components/Header"
 import Button from "../../components/button"
 import User from "../../components/user"
 import Avatar from "../../components/avatar"
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useGetDetails from '../../hooks/useGetDetails';
 import useGetCredits from '../../hooks/useGetCredits';
@@ -13,11 +13,13 @@ import handleFavorites from "../../helpers/toggleFavorites"
 
 
 const Details = () => {
+  
+  let { movieId } = useParams();
+  
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
     const handleBackToHome = () => navigate("/")    
     
-    let { movieId } = useParams();
     
     // I am cleaning the received param from "&" characters
     movieId = movieId?.split("").filter(char => char !== "&").join("")
@@ -35,9 +37,12 @@ const Details = () => {
     }
 
     const { isFavorite, toggleFavorite } = handleFavorites(Details, movieId)
+
+    const handleNavigate = (movieId: string) => navigate(`/details&${movieId}`)
     
+
     
-  return (
+    return (
     <div className="details-container">
       <div className="details-hero" ref={heroRef}>
 
@@ -90,11 +95,11 @@ const Details = () => {
             image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} 
             title={ movie.title } 
             key={movie.id} 
+            onClick={ () => handleNavigate(`${movie.id}`) }
           />
         ))}
         
-      </div>
-
+      </div>      
     </div>
   );
 }

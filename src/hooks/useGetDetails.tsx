@@ -25,7 +25,7 @@ const useGetDetails = (endpoint: string,) => {
   
     useEffect(() => {
         getDetails()
-    }, [])
+    }, [endpoint])
 
     return { Details, isLoading }
 }
