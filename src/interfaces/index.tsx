@@ -110,6 +110,33 @@ export declare namespace T {
     department: string;
     job: string;
   }
+
+
+  // Recommendations
+  export interface RecommendationsData {
+    page: number;
+    results: (Recommendations)[] | null;
+    total_pages: number;
+    total_results: number;
+  }
+  export interface Recommendations {
+    adult: boolean;
+    backdrop_path?: string | null;
+    id: number;
+    title: string;
+    original_language: string;
+    original_title: string;
+    overview: string;
+    poster_path?: string | null;
+    media_type: string;
+    genre_ids?: (number | null)[] | null;
+    popularity: number;
+    release_date: string;
+    video: boolean;
+    vote_average: number;
+    vote_count: number;
+  }
+  
   
 
   

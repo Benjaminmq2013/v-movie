@@ -1,33 +1,33 @@
-// The initial request to get movies cast
+// The initial request to get movies Credits
 import { T } from "../interfaces/index"
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { setLoading, setDetails } from "../store/movies"
+import { setLoading, setCredits } from "../store/movies"
 import fetchData from "../api/fetchData";
 import { useEffect } from 'react';
 
 
-const useGetDetails = (endpoint: string,) => {
+const useGetCredits = (endpoint: string,) => {
     
 
     const dispatch = useDispatch()
     
-    const Details:T.MovieDetails = useSelector((state: RootState) => state.movieSlice.details)
+    const Credits:T.MovieCredits = useSelector((state: RootState) => state.movieSlice.credits)
     const isLoading:boolean = useSelector((state: RootState) => state.movieSlice.loading )  
   
-    const handleSetDetails = (Details: T.MovieDetails) => dispatch(setDetails(Details));
+    const handleSetCredits = (Credits: T.MovieCredits) => dispatch(setCredits(Credits));
     const handleLoading = (loading: boolean) => dispatch(setLoading(loading))
   
-    const getDetails = () => fetchData<T.MovieDetails>(
+    const getCredits = () => fetchData<T.MovieCredits>(
       { entryPoint: endpoint, onLoading: (loading: boolean) => handleLoading(loading) },
-      { setData: (details:T.MovieDetails) => handleSetDetails(details) }
+      { setData: (Credits:T.MovieCredits) => handleSetCredits(Credits) }
     )
   
     useEffect(() => {
-        getDetails()
+        getCredits()
     }, [])
 
-    return { Details, isLoading }
+    return { Credits, isLoading }
 }
 
-export default useGetDetails
+export default useGetCredits

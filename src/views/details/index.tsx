@@ -7,29 +7,45 @@ import Avatar from "../../components/avatar"
 import { useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useGetDetails from '../../hooks/useGetDetails';
+import useGetCredits from '../../hooks/useGetCredits';
+import useGetRecommendations from '../../hooks/useGetRecommendations';
+import useFavorites from "../../hooks/useFavorites"
 
 
 
 const Details = () => {
+
     const navigate = useNavigate()
     const heroRef = useRef<HTMLDivElement>(null)
     let { movieId } = useParams();
 
+    
     // I am cleaning the received param from "&" characters
     movieId = movieId?.split("").filter(char => char !== "&").join("")
-
-    const { Details } = useGetDetails(`movie/${movieId}`)
     
-
+    const { Details } = useGetDetails(`movie/${movieId}`)
+    const { Credits } = useGetCredits(`movie/${movieId}/credits`)
+    const { Recommendations } = useGetRecommendations(`movie/${movieId}/recommendations`)
     const handleBackToHome = () => navigate(-1)    
-
-   
-    if(heroRef.current !== null){
+    
+    // In the first render, backdrop_path will be undefined, so we need to validate
+    if(heroRef.current !== null && Details.backdrop_path !== undefined){
       heroRef.current.style.backgroundImage = `url("https://image.tmdb.org/t/p/w780/${Details.backdrop_path}")`
     }
 
+    const { favorites, handleSetFavorites, handleRemoveFavorites } = useFavorites()
     
+    const toggleFavorite = () => {
+      
+      if(isFavorite) handleRemoveFavorites(Details)
+      else handleSetFavorites(Details)
+    }
 
+    const isFavorite:boolean = !!favorites?.find(elem => elem.id === Number(movieId))
+
+    console.log(isFavorite)
+    
+    
   return (
     <div className="details-container">
       <div className="details-hero" ref={heroRef}>
@@ -46,7 +62,12 @@ const Details = () => {
                 <h2 className="details-subtitle">{Details.original_language} | {Details.genres?.map(genre => genre.name + " ")} | { Details.runtime + " min" }</h2>
             </div>
 
-            <Button className="details-like__button" icon="/icons/details/heart-white.svg" title="Add to favorites" />
+            <Button 
+              onClick={ toggleFavorite } 
+              className="details-like__button" 
+              icon={`/icons/details/${isFavorite? "heart-red.svg" : "heart-white.svg"}`} 
+              title="Add to favorites" 
+            />
 
         </div>
       </div>
@@ -58,35 +79,29 @@ const Details = () => {
 
       <div className="details-cast">
         <h2 className="details-cast__title" >Star cast</h2>
+
         <div className="details-row">
-            <User className="details-user" title="Actor" subtitle="Angelina Jolie" image="https://images.pexels.com/photos/8419632/pexels-photo-8419632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-            <User className="details-user" title="Actor" subtitle="Angelina Jolie" image="https://images.pexels.com/photos/8419632/pexels-photo-8419632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+          {Credits.cast?.map(cast => (
+            <User 
+              className="details-user" 
+              title="Actor" 
+              subtitle={ cast.name } 
+              image={`https://image.tmdb.org/t/p/w300/${cast.profile_path}`} 
+              key={ cast.cast_id } />
+          ))}
         </div>
+        
       </div>
 
       <div className="details-row">
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
-        <Avatar image="images/poster.png" title="Ironman" />
+        {Recommendations?.map(movie => (
+          <Avatar 
+            image={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} 
+            title={ movie.title } 
+            key={movie.id} 
+          />
+        ))}
+        
       </div>
 
     </div>

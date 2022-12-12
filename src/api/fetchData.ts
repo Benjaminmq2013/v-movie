@@ -33,7 +33,7 @@ const fetchData = <Types,>( params: params, callback?: { setData: (data: Types) 
     axios( config )
     
     .then((response:AxiosResponse<Types>) => {  
-        console.log(response)          
+        console.log(response)        
         params.onLoading(false)
         callback && callback.setData(response.data)
     })

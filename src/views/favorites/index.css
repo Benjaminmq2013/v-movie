@@ -1,3 +1,14 @@
 .home-catalogue{
     width: 1165px;
 }
+
+.results-row{
+    display: flex;
+    align-items: center
+}
+
+.results-tag{
+    width: auto;
+    padding: 0 10px;
+    flex-direction: row-reverse;
+}

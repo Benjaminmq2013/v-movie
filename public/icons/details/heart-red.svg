@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="44.213" height="39.443" viewBox="0 0 44.213 39.443">
-  <g id="Group_82" data-name="Group 82" transform="translate(-311.235 -38.073)">
+<svg xmlns="http://www.w3.org/2000/svg" width="47.213" height="43.064" viewBox="0 0 47.213 43.064">
+  <g id="Group_82" data-name="Group 82" transform="translate(-309.735 -36.573)">
     <g id="_x31_66_x2C__Heart_x2C__Love_x2C__Like_x2C__Twitter" transform="translate(311.235 38.073)">
       <g id="Group_15" data-name="Group 15" transform="translate(0)">
-        <path id="Path_1" data-name="Path 1" d="M70.15,59.628a11.056,11.056,0,0,1,11.063,11.05c0,11.05-11.063,17.342-22.113,28.392C48.05,88.02,37,81.728,37,70.678a11.053,11.053,0,0,1,11.05-11.05c5.525,0,8.287,2.763,11.05,8.287C61.862,62.391,64.625,59.628,70.15,59.628Z" transform="translate(-37 -59.628)" fill="#f11d6a"/>
+        <path id="Path_1" data-name="Path 1" d="M70.15,59.628a11.056,11.056,0,0,1,11.063,11.05c0,11.05-11.063,17.342-22.113,28.392C48.05,88.02,37,81.728,37,70.678a11.053,11.053,0,0,1,11.05-11.05c5.525,0,8.287,2.763,11.05,8.287C61.862,62.391,64.625,59.628,70.15,59.628Z" transform="translate(-37 -59.628)" fill="#f11d6a" stroke="#f11d6a" stroke-width="3"/>
       </g>
     </g>
   </g>

@@ -1,8 +1,11 @@
 import Button from "../../components/button"
 import Header from "../../components/Header"
 import Input from "../../components/input"
-import { useLocation, useMatch, useNavigate, useNavigation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./index.css"
+import searchMovie from '../../middleware/searchMovie';
+import { useContext } from 'react';
+import { SearchContext } from '../../context/searchContext';
 
 export interface params{
   children: JSX.Element | JSX.Element[],
@@ -16,13 +19,24 @@ const HomeLayout = (params:params):JSX.Element => {
   const handleNavigateHome = () => Navigate("/")
   const handleNavigateFavorites = () => Navigate("/favorites")
 
+  const { isLoading, handleSearch } = searchMovie("search/movie")
+  
+  const { value, setValue } = useContext(SearchContext)
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    handleSearch(value)
+  }
+
+  
+
   return (
     <div className="home-container">
         <Header className="home-header" />
-        <div className="home-searchbar__container">
-          <Input className="home-searchbar" placeholder="Search a movie..." />
+        <form className="home-searchbar__container" onSubmit={ handleSubmit } >
+          <Input className="home-searchbar" placeholder="Search a movie..." value ={ value } setValue = { setValue } />
           <Button className="home-search_button" icon="/icons/home/search.svg" />
-        </div>
+        </form>
 
         <div className="home-wrapper" >
           <div className="home-menu">
