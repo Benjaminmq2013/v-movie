@@ -9,16 +9,15 @@ import { useParams, useNavigate } from 'react-router-dom';
 import useGetDetails from '../../hooks/useGetDetails';
 import useGetCredits from '../../hooks/useGetCredits';
 import useGetRecommendations from '../../hooks/useGetRecommendations';
-import useFavorites from "../../hooks/useFavorites"
-
+import handleFavorites from "../../helpers/toggleFavorites"
 
 
 const Details = () => {
 
     const navigate = useNavigate()
-    const heroRef = useRef<HTMLDivElement>(null)
+    const handleBackToHome = () => navigate("/")    
+    
     let { movieId } = useParams();
-
     
     // I am cleaning the received param from "&" characters
     movieId = movieId?.split("").filter(char => char !== "&").join("")
@@ -26,24 +25,16 @@ const Details = () => {
     const { Details } = useGetDetails(`movie/${movieId}`)
     const { Credits } = useGetCredits(`movie/${movieId}/credits`)
     const { Recommendations } = useGetRecommendations(`movie/${movieId}/recommendations`)
-    const handleBackToHome = () => navigate(-1)    
+    
     
     // In the first render, backdrop_path will be undefined, so we need to validate
+    const heroRef = useRef<HTMLDivElement>(null)
+
     if(heroRef.current !== null && Details.backdrop_path !== undefined){
       heroRef.current.style.backgroundImage = `url("https://image.tmdb.org/t/p/w780/${Details.backdrop_path}")`
     }
 
-    const { favorites, handleSetFavorites, handleRemoveFavorites } = useFavorites()
-    
-    const toggleFavorite = () => {
-      
-      if(isFavorite) handleRemoveFavorites(Details)
-      else handleSetFavorites(Details)
-    }
-
-    const isFavorite:boolean = !!favorites?.find(elem => elem.id === Number(movieId))
-
-    console.log(isFavorite)
+    const { isFavorite, toggleFavorite } = handleFavorites(Details, movieId)
     
     
   return (

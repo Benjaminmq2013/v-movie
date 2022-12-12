@@ -22,6 +22,7 @@ const HomeLayout = (params:params):JSX.Element => {
   const { isLoading, handleSearch } = searchMovie("search/movie")
   
   const { value, setValue } = useContext(SearchContext)
+  const setText = (input: string) => setValue(input)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -34,7 +35,7 @@ const HomeLayout = (params:params):JSX.Element => {
     <div className="home-container">
         <Header className="home-header" />
         <form className="home-searchbar__container" onSubmit={ handleSubmit } >
-          <Input className="home-searchbar" placeholder="Search a movie..." value ={ value } setValue = { setValue } />
+          <Input className="home-searchbar" placeholder="Search a movie..." value ={ value } setValue = { setText } />
           <Button className="home-search_button" icon="/icons/home/search.svg" />
         </form>
 

@@ -6,13 +6,14 @@ export interface params{
     params?: object,  
     data?: object,  
     then?: () => void
+    base_url?: string,
     
     onLoading: (loading: boolean) => void
 }
 
 const fetchData = <Types,>( params: params, callback?: { setData: (data: Types) => void }  ) => {   
 
-    const URL:string = `https://api.themoviedb.org/3/${params.entryPoint}`
+    const URL:string = params.base_url || `https://api.themoviedb.org/3/${params.entryPoint}`
     const API_KEY:string = "69efed0ceaf7244cbb6ee4e9f15365d9"
     
     const config:AxiosRequestConfig = {

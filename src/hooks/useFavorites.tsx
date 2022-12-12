@@ -6,6 +6,8 @@ import { T } from '../interfaces';
 
 const useFavorites = () => {
 
+    const [favorites, setFavorites] = useState<T.MovieDetails[] | null>(()=> getFavorites())
+
     const getFavorites = ():T.MovieDetails[] | null => {
         try {
             const favorites = window.localStorage.getItem("FavoriteMovies")
@@ -16,13 +18,12 @@ const useFavorites = () => {
 
         return null    
     }
-
-    const [favorites, setFavorites] = useState<T.MovieDetails[] | null>(()=> getFavorites())
         
+    
 
     const handleSetFavorites = (movie:T.MovieDetails) =>{
 
-        // If the movie is already in Favorites, we finish this funciton.
+        // If the movie is already in Favorites, we finish this function.
         if(favorites?.find(film => film.id === movie.id)) return
 
         // Saving Movie in LocalStorage
@@ -34,6 +35,7 @@ const useFavorites = () => {
         } 
         setFavorites(getFavorites())
     } 
+
 
 
     const handleRemoveFavorites = (movie:T.MovieDetails) => {

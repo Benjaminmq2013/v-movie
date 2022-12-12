@@ -7,7 +7,7 @@ export interface params{
   placeholder?: string,
   type?: React.HTMLInputTypeAttribute;
   value: string,
-  setValue: React.Dispatch<React.SetStateAction<string>>
+  setValue: (input: string) => void
 }
 
 const App = (params:params):JSX.Element => {
