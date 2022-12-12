@@ -1,4 +1,5 @@
 import "./index.css"
+import "./responsive.css"
 
 import Header from "../../components/Header"
 import Button from "../../components/button"

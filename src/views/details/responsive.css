@@ -1,0 +1,74 @@
+@media screen and (max-width: 1200px){
+    :root{
+        --details-padding: 0px;
+    }
+    .details-overview__title, .details-overview__description, .details-cast, .details-row{
+        margin-left: 10px;
+    }
+}
+@media screen and (max-width: 768px){
+    :root{
+        --avatar-height: 112px!important;
+        --avatar-width: 116px!important;
+
+        --details-mask-padding: 19px;
+    }
+    .details-overview__title{
+        font-size: 17px;
+    }
+    .details-title{
+        font-size: 18px;
+    }
+    .details-overview__description{
+        font-size: 13px;
+    }
+    .details-subtitle{
+        font-size: 13px;
+    }
+    .details-cast__title{
+        font-size: 17px;
+    }
+    .avatar-title{
+        font-size: 13px;
+    }
+    .details-hero{
+        background-position: center;
+    }
+
+    .details-like__button  .button_icon{
+        height: 30px;
+        width: 30px;
+    }
+    .details-like__button    {
+        font-size: 13px;
+        bottom: initial;
+        right: 4px;
+        top: 17px;
+    }
+    .details-back__button{
+        font-size: 13px;
+    }
+    .details-back__button .button_icon{
+        height: 12px;
+        width: 9px;
+    }
+    .header-name{
+        font-size: 16px;
+    }
+    .header-logo {
+        height: 20px;
+        width: 26px;
+    }
+    .details-back__button{
+        margin-top: 9px;
+    }
+    .Header{
+        margin-top: 20px;
+    }
+    .details-mask{
+        border-radius: 0;
+    }
+    .details-hero{
+        border-radius: 0;
+    }
+}
