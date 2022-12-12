@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { T } from '../../interfaces'
 
-export interface shopState {
+export interface moviesState {
   movies:T.Movies[],
   details: T.MovieDetails
   credits: T.MovieCredits
@@ -11,7 +11,7 @@ export interface shopState {
   loading: boolean,
 }
 
-const initialState: shopState = {
+const initialState: moviesState = {
   movies: [],
   details: {} as T.MovieDetails,
   credits: {} as T.MovieCredits,

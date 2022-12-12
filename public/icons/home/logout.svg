@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17.015" height="19" viewBox="0 0 17.015 19">
+  <g id="logout" transform="translate(-5.93 -2)">
+    <line id="Line_3" data-name="Line 3" x2="8.821" transform="translate(12.709 11.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_6" data-name="Path 6" d="M18.144,17.607v2.036H7.287V3.357H18.144V5.393H19.5V2.679A.679.679,0,0,0,18.823,2H6.609a.679.679,0,0,0-.679.679V20.321A.679.679,0,0,0,6.609,21H18.823a.679.679,0,0,0,.679-.679V17.607Z" fill="#fff"/>
+    <line id="Line_4" data-name="Line 4" x1="2.714" y2="2.714" transform="translate(18.816 11.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_5" data-name="Line 5" x1="2.714" y1="2.714" transform="translate(18.816 8.786)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_6" data-name="Line 6" y1="1.357" transform="translate(18.816 4.775)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line id="Line_7" data-name="Line 7" y1="1.357" transform="translate(18.816 16.929)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

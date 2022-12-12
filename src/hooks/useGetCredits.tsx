@@ -8,7 +8,6 @@ import { useEffect } from 'react';
 
 
 const useGetCredits = (endpoint: string,) => {
-    
 
     const dispatch = useDispatch()
     

@@ -6,12 +6,16 @@ import "./index.css"
 import searchMovie from '../../middleware/searchMovie';
 import { useContext } from 'react';
 import { SearchContext } from '../../context/searchContext';
+import { useDispatch } from 'react-redux';
+import { setLogOut } from "../../store/auth";
 
 export interface params{
   children: JSX.Element | JSX.Element[],
 }
 
 const HomeLayout = (params:params):JSX.Element => {
+
+  const dispatch = useDispatch()
 
   const Navigate = useNavigate()
   const Location = useLocation()
@@ -29,7 +33,11 @@ const HomeLayout = (params:params):JSX.Element => {
     handleSearch(value)
   }
 
+  const handleLogOut = () => {
+    dispatch(setLogOut())
+  }
   
+
 
   return (
     <div className="home-container">
@@ -37,6 +45,7 @@ const HomeLayout = (params:params):JSX.Element => {
         <form className="home-searchbar__container" onSubmit={ handleSubmit } >
           <Input className="home-searchbar" placeholder="Search a movie..." value ={ value } setValue = { setText } />
           <Button className="home-search_button" icon="/icons/home/search.svg" />
+          <Button className="home-search_button results-tag" icon="/icons/home/logout.svg" title="Log Out" onClick={handleLogOut} type="button" />
         </form>
 
         <div className="home-wrapper" >

@@ -34,7 +34,7 @@ const Home = () => {
       <div className="home-catalogue__container">
 
         <div className="results-row">
-          <h2>{SearchMovies.length >= 1 ? "Search results:" : "Favorites" }</h2>
+          <h2>{SearchMovies.length >= 1 ? "Search results:" : "Popular" }</h2>
 
           { SearchMovies.length >= 1 && 
           <Button 

@@ -6,8 +6,7 @@ import { T } from '../interfaces';
 
 const useFavorites = () => {
 
-    const [favorites, setFavorites] = useState<T.MovieDetails[] | null>(()=> getFavorites())
-
+    
     const getFavorites = ():T.MovieDetails[] | null => {
         try {
             const favorites = window.localStorage.getItem("FavoriteMovies")
@@ -15,10 +14,11 @@ const useFavorites = () => {
         } catch (error) {
             console.error(error)
         }
-
+        
         return null    
     }
-        
+    
+    const [favorites, setFavorites] = useState<T.MovieDetails[] | null>(()=> getFavorites())
     
 
     const handleSetFavorites = (movie:T.MovieDetails) =>{

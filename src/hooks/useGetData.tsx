@@ -9,26 +9,25 @@ import { useEffect } from 'react';
 
 
 const useGetData = (endpoint: string) => {
-    
 
-    const dispatch = useDispatch()
-    
-    const Movies:T.Movies[] = useSelector((state: RootState) => state.movieSlice.movies)
-    const isLoading:boolean = useSelector((state: RootState) => state.movieSlice.loading )  
+  const dispatch = useDispatch()
   
-    const handleSetMovies = (movies: T.Movies[]) => dispatch(setMovies(movies));
-    const handleLoading = (loading: boolean) => dispatch(setLoading(loading))
-  
-    const getProducts = () => fetchData<{pages:number, results: T.Movies[]}>(
-      { entryPoint: endpoint, onLoading: (loading: boolean) => handleLoading(loading) },
-      { setData: ({results, pages}) => handleSetMovies(results) }
-    )
-  
-    useEffect(() => {
-      getProducts()
-    }, [])
+  const Movies:T.Movies[] = useSelector((state: RootState) => state.movieSlice.movies)
+  const isLoading:boolean = useSelector((state: RootState) => state.movieSlice.loading )  
 
-    return { Movies, isLoading }
+  const handleSetMovies = (movies: T.Movies[]) => dispatch(setMovies(movies));
+  const handleLoading = (loading: boolean) => dispatch(setLoading(loading))
+
+  const getProducts = () => fetchData<{pages:number, results: T.Movies[]}>(
+    { entryPoint: endpoint, onLoading: (loading: boolean) => handleLoading(loading) },
+    { setData: ({results, pages}) => handleSetMovies(results) }
+  )
+
+  useEffect(() => {
+    getProducts()
+  }, [])
+
+  return { Movies, isLoading }
 }
 
 export default useGetData
