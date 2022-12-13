@@ -3,7 +3,7 @@
         --login-padding-left: 0px;
         --login-padding-right: 0px;
     }
-    .input_container .input{
+    .login-form .input{
         width: 87vw;
         height: 45px;
     }
